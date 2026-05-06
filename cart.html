@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кошик — Українська Валькірія</title>
+  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .cart-table { width: 100%; border-collapse: collapse; }
+    .cart-table th, .cart-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--uv-line); }
+    .cart-table th { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--uv-ink-soft); font-weight: 600; }
+    .qty-ctrl { display: inline-flex; align-items: center; gap: 8px; }
+    .qty-ctrl button { width: 28px; height: 28px; border: 1px solid var(--uv-line); background: var(--uv-white); border-radius: 4px; cursor: pointer; }
+    .cart-summary { background: var(--uv-cream-warm); padding: 32px; border-radius: var(--radius-lg); position: sticky; top: 100px; }
+    .cart-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--uv-line); }
+    .cart-row.total { font-family: var(--font-display); font-size: 1.6rem; color: var(--uv-navy); border-bottom: none; padding-top: 20px; }
+    .cart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; }
+    @media (max-width: 800px) { .cart-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Магазин</span>
+      <h1>Твій кошик</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="cartContainer"></div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function render() {
+      const cart = JSON.parse(localStorage.getItem('uv_cart') || '[]');
+      const c = document.getElementById('cartContainer');
+      if (!cart.length) {
+        c.innerHTML = `
+          <div class="text-center" style="padding: 80px 0;">
+            <h2>Поки що порожньо</h2>
+            <p class="lead" style="margin: 0 auto 32px;">Зайди в магазин — там брендований мерч, увесь прибуток йде на програми підтримки.</p>
+            <a href="shop.html" class="btn btn-gold">До магазину →</a>
+          </div>
+        `;
+        return;
+      }
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      c.innerHTML = `
+        <div class="cart-grid">
+          <table class="cart-table">
+            <thead><tr><th>Товар</th><th>К-сть</th><th>Сума</th><th></th></tr></thead>
+            <tbody>
+              ${cart.map((i, idx) => `
+                <tr>
+                  <td><strong>${i.name}</strong><br><span style="font-size:13px;color:var(--uv-ink-soft);">${i.price} ₴ / шт.</span></td>
+                  <td>
+                    <div class="qty-ctrl">
+                      <button onclick="changeQty(${idx}, -1)">−</button>
+                      <span style="min-width: 24px; text-align: center;">${i.qty}</span>
+                      <button onclick="changeQty(${idx}, 1)">+</button>
+                    </div>
+                  </td>
+                  <td><strong>${i.price * i.qty} ₴</strong></td>
+                  <td><a href="#" onclick="removeItem(${idx}); return false;" style="color: var(--uv-ink-soft); font-size: 13px;">Видалити</a></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          <div>
+            <div class="cart-summary">
+              <h3 style="margin-top: 0;">Підсумок</h3>
+              <div class="cart-row"><span>Товари</span><span>${total} ₴</span></div>
+              <div class="cart-row"><span>Доставка</span><span>розрахунок на checkout</span></div>
+              <div class="cart-row total"><span>Разом</span><span>${total} ₴</span></div>
+              <button class="btn btn-primary" style="width:100%; margin-top: 20px;" onclick="checkout()">Оформити замовлення</button>
+              <p style="font-size: 12px; color: var(--uv-ink-soft); margin-top: 12px; text-align: center;">Оплата через Monobank Acquiring (буде підключено)</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function changeQty(idx, delta) {
+      const cart = JSON.parse(localStorage.getItem('uv_cart') || '[]');
+      cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+      localStorage.setItem('uv_cart', JSON.stringify(cart));
+      render();
+      window.uv_updateCart && window.uv_updateCart();
+    }
+    function removeItem(idx) {
+      const cart = JSON.parse(localStorage.getItem('uv_cart') || '[]');
+      cart.splice(idx, 1);
+      localStorage.setItem('uv_cart', JSON.stringify(cart));
+      render();
+      window.uv_updateCart && window.uv_updateCart();
+    }
+    function checkout() {
+      alert('Тут буде форма оформлення замовлення з оплатою Monobank Acquiring.\n\nПокажемо ім\\'я, телефон, адресу доставки → переадресація на платіжку.');
+    }
+    render();
+  </script>
+</body>
+</html>

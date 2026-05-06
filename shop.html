@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин — Українська Валькірія</title>
+  <meta name="description" content="Брендований мерч організації. 100% прибутку — на програми підтримки жінок.">
+  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Магазин</span>
+      <h1>Носи. Підтримуй. Розповідай.</h1>
+      <p>100% прибутку від продажу мерчу йде на програми психологічної, юридичної та гуманітарної підтримки.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="shop-grid" id="shopGrid"></div>
+    </div>
+  </section>
+
+  <section class="section bg-cream section-tight">
+    <div class="container text-center">
+      <h2 style="font-size: 1.8rem;">Доставка по Україні і світу</h2>
+      <p class="lead" style="margin: 0 auto;">Нова Пошта по Україні від 80 ₴, міжнародна доставка — Укрпошта і DHL. Оплата картою через Monobank Acquiring.</p>
+    </div>
+  </section>
+
+  <!-- Cart drawer -->
+  <div id="cartBanner" class="cart-banner">
+    <span>🛒 У кошику: <strong data-count>0</strong></span>
+    <a href="cart.html" class="btn btn-gold" style="padding: 6px 16px; font-size: 13px;">Перейти →</a>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const productsFallback = [
+      { slug: 'tshirt-valkyrie', name: 'Футболка «Валькірія»', desc: 'Унісекс, 100% органічна бавовна, друк шовкографією. Розміри XS–XXL.', price: 850, img: 'public/images/logo.png' },
+      { slug: 'hoodie-uw', name: 'Худі «UW»', desc: 'Мінімалістичний крій з вишитим логотипом. Розміри XS–XXL.', price: 1850, img: 'public/images/logo.png' },
+      { slug: 'tote-strong', name: 'Шопер «Сила жінки»', desc: 'Полотняна сумка з ілюстрацією. Витримує 10 кг.', price: 350, img: 'public/images/logo.png' },
+      { slug: 'mug-courage', name: 'Чашка «Хоробрість»', desc: 'Керамічна чашка 350 мл, виготовлена в Україні.', price: 420, img: 'public/images/logo.png' },
+      { slug: 'cap-navy', name: 'Кепка темно-синя', desc: 'Регульована застібка, вишивка логотипу.', price: 650, img: 'public/images/logo.png' },
+      { slug: 'pin-wings', name: 'Значок «Крила»', desc: 'Металевий значок-валькірія, фірмова синя емаль.', price: 180, img: 'public/images/logo.png' }
+    ];
+
+    fetch('content/products/index.json')
+      .then(r => r.ok ? r.json() : productsFallback)
+      .catch(() => productsFallback)
+      .then(products => {
+        const grid = document.getElementById('shopGrid');
+        grid.innerHTML = products.map(p => `
+          <div class="product">
+            <div class="product-img"><img src="${p.img}" alt="${p.name}"></div>
+            <div class="product-body">
+              <h3 class="product-name">${p.name}</h3>
+              <p class="product-desc">${p.desc}</p>
+              <div class="product-foot">
+                <span class="product-price">${p.price} ₴</span>
+                <button class="btn btn-primary" onclick="addToCart('${p.slug}', '${p.name.replace(/'/g, "\\'")}', ${p.price})">У кошик</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      });
+
+    function addToCart(slug, name, price) {
+      const cart = JSON.parse(localStorage.getItem('uv_cart') || '[]');
+      const existing = cart.find(i => i.slug === slug);
+      if (existing) existing.qty += 1;
+      else cart.push({ slug, name, price, qty: 1 });
+      localStorage.setItem('uv_cart', JSON.stringify(cart));
+      window.uv_updateCart && window.uv_updateCart();
+    }
+  </script>
+</body>
+</html>

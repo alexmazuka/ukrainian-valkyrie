@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог — Українська Валькірія</title>
+  <meta name="description" content="Історії жінок, експертні матеріали, новини організації.">
+  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Блог</span>
+      <h1>Історії, поради, новини.</h1>
+      <p>Тут жінки розповідають свої історії, експертки діляться знаннями, а ми звітуємо про події в організації.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid" id="blogGrid">
+        <!-- Posts injected by JS from /content/blog/index.json -->
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Load posts list from content/blog/index.json (managed by Decap CMS)
+    const postsFallback = [
+      {
+        slug: 'istoriya-olhy',
+        title: 'Історія Ольги: від Маріуполя до власної студії в Києві',
+        excerpt: 'Ольга виїхала з Маріуполя у березні 2022 року. Через два роки вона веде свою маленьку студію кераміки. Розповідаємо, як це сталось.',
+        date: '2026-04-20',
+        category: 'Історії',
+        cover: 'public/images/impact-community.jpg'
+      },
+      {
+        slug: 'pravo-na-vyplaty',
+        title: 'Як ВПО оформити житловий сертифікат у 2026 році',
+        excerpt: 'Покрокова інструкція від наших юристок: документи, строки, типові помилки і що робити, якщо відмовили.',
+        date: '2026-04-12',
+        category: 'Право',
+        cover: 'public/images/programs-training.jpg'
+      },
+      {
+        slug: 'startuye-novyy-nabir',
+        title: 'Стартує новий набір на програму «Кар\'єра 2026»',
+        excerpt: 'Приймаємо заявки на участь у 6-місячній програмі перекваліфікації для жінок-переселенок. До 15 травня.',
+        date: '2026-04-05',
+        category: 'Новини',
+        cover: 'public/images/mission-team.jpg'
+      },
+      {
+        slug: 'psyholohichna-pidtrymka',
+        title: 'Як говорити з дитиною про війну: поради психологині',
+        excerpt: 'Психологиня Олена Петрівна розповідає, як підтримати дітей, які пережили евакуацію або втрату.',
+        date: '2026-03-28',
+        category: 'Психологія',
+        cover: 'public/images/team-holovko.jpg'
+      }
+    ];
+
+    fetch('content/blog/index.json')
+      .then(r => r.ok ? r.json() : postsFallback)
+      .catch(() => postsFallback)
+      .then(posts => {
+        const grid = document.getElementById('blogGrid');
+        grid.innerHTML = posts.map(p => `
+          <a href="blog-post.html?slug=${p.slug}" class="post-card">
+            <div class="post-cover"><img src="${p.cover}" alt=""></div>
+            <div class="post-body">
+              <div class="post-meta">${p.category} · ${new Date(p.date).toLocaleDateString('uk-UA', {day: 'numeric', month: 'long', year: 'numeric'})}</div>
+              <h3>${p.title}</h3>
+              <p>${p.excerpt}</p>
+              <span class="read-more">Читати →</span>
+            </div>
+          </a>
+        `).join('');
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Стаття — Українська Валькірія</title>
+  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="section">
+    <div class="container">
+      <article class="post-article" id="postArticle">
+        <p style="color: var(--uv-ink-soft);">Завантаження…</p>
+      </article>
+      <div class="text-center" style="margin-top: 64px;">
+        <a href="blog.html" class="btn btn-outline">← До всіх статей</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug') || 'istoriya-olhy';
+    const article = document.getElementById('postArticle');
+
+    // Try to load markdown file from /content/blog/{slug}.md
+    fetch(`content/blog/${slug}.md`)
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(md => {
+        // Parse front matter
+        const fmMatch = md.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+        let meta = {}, body = md;
+        if (fmMatch) {
+          fmMatch[1].split('\n').forEach(line => {
+            const [k, ...v] = line.split(':');
+            if (k) meta[k.trim()] = v.join(':').trim().replace(/^["']|["']$/g, '');
+          });
+          body = fmMatch[2];
+        }
+        document.title = (meta.title || 'Стаття') + ' — Українська Валькірія';
+        article.innerHTML = `
+          <div class="post-meta" style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--uv-gold); margin-bottom: 16px;">
+            ${meta.category || 'Блог'} · ${meta.date ? new Date(meta.date).toLocaleDateString('uk-UA', {day:'numeric', month:'long', year:'numeric'}) : ''}
+          </div>
+          <h1>${meta.title || ''}</h1>
+          ${meta.cover ? `<img src="${meta.cover}" alt="">` : ''}
+          ${marked.parse(body)}
+        `;
+      })
+      .catch(() => {
+        article.innerHTML = `
+          <div class="post-meta" style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--uv-gold); margin-bottom: 16px;">Історії · 20 квітня 2026</div>
+          <h1>Історія Ольги: від Маріуполя до власної студії в Києві</h1>
+          <p style="font-size: 1.2rem; color: var(--uv-ink-soft);">Ольга виїхала з Маріуполя у березні 2022 року. Через чотири роки вона веде маленьку студію кераміки в Києві. Це історія про те, як «Українська Валькірія» допомогла їй пройти шлях від першої кризи до самостійного бізнесу.</p>
+          <p>Коли почалася повномасштабна війна, Ользі було 32. Вона працювала в маркетингу комбінату, мала квартиру на проспекті Миру, чоловіка-моряка і п'ятирічну доньку. Через три тижні в Маріуполі вона вже не мала нічого з цього списку, окрім доньки.</p>
+          <h2>Перші місяці</h2>
+          <p>Перші три місяці в Києві Ольга не могла вийти з тимчасового житла. «Я не плакала. Я просто сиділа біля вікна. Донька малювала, а я сиділа», — згадує вона.</p>
+          <p>На «Валькірію» вийшла через чат для переселенок. Першою була психологиня Олена. «Вона не питала, як ти. Вона запитала, що мені сьогодні треба зробити такого, щоб лягти спати з відчуттям, що день не пропав. І ми разом написали список: погодувати дитину, прийняти душ. Усе. Більше нічого. І це було саме те, що мені потрібно було почути».</p>
+          <h2>Програма «Кар'єра»</h2>
+          <p>Через шість місяців Ольга подалася на програму перекваліфікації. Хотіла кераміку — мала з дитинства захоплення, але ніколи не наважилась зробити цього основною роботою.</p>
+          <blockquote style="border-left: 4px solid var(--uv-gold); padding: 16px 24px; font-family: var(--font-display); font-size: 1.4rem; font-style: italic; color: var(--uv-navy);">«Менторка сказала: ти зараз не маєш чого втрачати, тому це найкращий момент пробувати те, чого боялась усе життя».</blockquote>
+          <p>Через рік Ольга отримала мікрогрант на гончарний круг і піч. Зараз її студія «Глина» в Подолі — це шість майстер-класів на тиждень і онлайн-магазин з постачаннями по всій Україні.</p>
+          <h2>Що далі</h2>
+          <p>Ольга планує найняти ще одну переселенку як майстриню — «щоб коло замкнулось». Вона стала менторкою у програмі «Кар'єра» і веде групу для жінок з Маріуполя.</p>
+          <p><em>Фото: студія «Глина», Київ. Імена та деякі деталі змінені на прохання героїні.</em></p>
+        `;
+      });
+  </script>
+</body>
+</html>

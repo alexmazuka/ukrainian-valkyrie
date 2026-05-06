@@ -1,0 +1,8 @@
+[
+  { "slug": "tshirt-valkyrie", "name": "Футболка «Валькірія»", "desc": "Унісекс, 100% органічна бавовна, друк шовкографією. Розміри XS–XXL.", "price": 850, "img": "public/images/logo.png" },
+  { "slug": "hoodie-uw", "name": "Худі «UW»", "desc": "Мінімалістичний крій з вишитим логотипом. Розміри XS–XXL.", "price": 1850, "img": "public/images/logo.png" },
+  { "slug": "tote-strong", "name": "Шопер «Сила жінки»", "desc": "Полотняна сумка з ілюстрацією. Витримує 10 кг.", "price": 350, "img": "public/images/logo.png" },
+  { "slug": "mug-courage", "name": "Чашка «Хоробрість»", "desc": "Керамічна чашка 350 мл, виготовлена в Україні.", "price": 420, "img": "public/images/logo.png" },
+  { "slug": "cap-navy", "name": "Кепка темно-синя", "desc": "Регульована застібка, вишивка логотипу.", "price": 650, "img": "public/images/logo.png" },
+  { "slug": "pin-wings", "name": "Значок «Крила»", "desc": "Металевий значок-валькірія, фірмова синя емаль.", "price": 180, "img": "public/images/logo.png" }
+]

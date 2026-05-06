@@ -1,0 +1,129 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Альтернатива: GitHub OAuth (потребує OAuth proxy)
+# backend:
+#   name: github
+#   repo: <your-org>/<your-repo>
+#   branch: main
+#   base_url: https://api.netlify.com  # або власний OAuth proxy
+
+media_folder: "public/images/uploads"
+public_folder: "/public/images/uploads"
+
+locale: 'uk'
+
+collections:
+  # ----------------------------------------
+  # Блог
+  # ----------------------------------------
+  - name: "blog"
+    label: "Блог"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Заголовок",   name: "title",    widget: "string" }
+      - { label: "Дата",         name: "date",     widget: "datetime" }
+      - { label: "Категорія",   name: "category", widget: "select", options: ["Історії", "Право", "Психологія", "Кар'єра", "Гуманітарка", "Новини", "Медіа"] }
+      - { label: "Короткий опис", name: "excerpt", widget: "text" }
+      - { label: "Обкладинка",   name: "cover",   widget: "image", required: false }
+      - { label: "Мова",         name: "lang",    widget: "select", options: ["uk", "en"], default: "uk" }
+      - { label: "Текст статті", name: "body",    widget: "markdown" }
+
+  # ----------------------------------------
+  # Магазин
+  # ----------------------------------------
+  - name: "products"
+    label: "Магазин"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Назва",        name: "name",  widget: "string" }
+      - { label: "Опис",         name: "desc",  widget: "text" }
+      - { label: "Ціна (₴)",     name: "price", widget: "number", min: 0 }
+      - { label: "Зображення",   name: "img",   widget: "image" }
+      - { label: "Доступний?",   name: "available", widget: "boolean", default: true }
+      - { label: "Розміри",      name: "sizes", widget: "list", required: false, default: ["S", "M", "L", "XL"] }
+      - { label: "Опис на сторінці товару", name: "body", widget: "markdown", required: false }
+
+  # ----------------------------------------
+  # Звіти
+  # ----------------------------------------
+  - name: "reports"
+    label: "Звіти"
+    folder: "content/reports"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Заголовок",    name: "title",   widget: "string" }
+      - { label: "Рік / період", name: "period",  widget: "string", hint: "наприклад: 2025 або Q1 · 2026" }
+      - { label: "Дата публікації", name: "date", widget: "datetime" }
+      - { label: "Опис",         name: "summary", widget: "text" }
+      - { label: "PDF файл",     name: "file",    widget: "file" }
+      - { label: "Тип",          name: "kind",    widget: "select", options: ["annual", "quarterly"] }
+
+  # ----------------------------------------
+  # Партнери (єдиний файл-список)
+  # ----------------------------------------
+  - name: "settings"
+    label: "Налаштування сайту"
+    files:
+      - file: "content/partners.json"
+        label: "Партнери"
+        name: "partners"
+        fields:
+          - label: "Список партнерів"
+            name: "partners"
+            widget: "list"
+            fields:
+              - { label: "Назва", name: "name", widget: "string" }
+              - { label: "Логотип", name: "logo", widget: "image", required: false }
+              - { label: "Сайт", name: "url", widget: "string", required: false }
+              - { label: "Показати одразу (топ-4)", name: "featured", widget: "boolean", default: false }
+
+      - file: "content/testimonials.json"
+        label: "Відгуки"
+        name: "testimonials"
+        fields:
+          - label: "Список відгуків"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Цитата", name: "quote", widget: "text" }
+              - { label: "Ім'я", name: "name", widget: "string" }
+              - { label: "Місто / роль", name: "meta", widget: "string" }
+
+      - file: "content/site.json"
+        label: "Контакти і соцмережі"
+        name: "site"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Телефон", name: "phone", widget: "string" }
+          - { label: "Адреса", name: "address", widget: "string" }
+          - label: "Соцмережі"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook",  name: "facebook",  widget: "string", required: false }
+              - { label: "YouTube",   name: "youtube",   widget: "string", required: false }
+              - { label: "Telegram",  name: "telegram",  widget: "string", required: false }
+              - { label: "TikTok",    name: "tiktok",    widget: "string", required: false }
+              - { label: "X / Twitter", name: "x", widget: "string", required: false }
+          - label: "Реквізити для донатів"
+            name: "donate"
+            widget: "object"
+            fields:
+              - { label: "Моно-банка URL", name: "monojar", widget: "string", required: false }
+              - { label: "PayPal URL", name: "paypal", widget: "string", required: false }
+              - { label: "IBAN", name: "iban", widget: "string", required: false }
+              - { label: "ЄДРПОУ", name: "edrpou", widget: "string", required: false }

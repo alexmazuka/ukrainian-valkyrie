@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отримати допомогу — Українська Валькірія</title>
+  <meta name="description" content="Як звернутися за психологічною, юридичною та гуманітарною підтримкою для жінок-переселенок.">
+  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Допомога</span>
+      <h1>Якщо тобі потрібна підтримка — ми поряд.</h1>
+      <p>Усі наші послуги — безкоштовні й конфіденційні. Ми не передаємо твої дані третім сторонам і не вимагаємо документів про статус.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Як це працює</span>
+        <h2>Три кроки до першої зустрічі</h2>
+      </div>
+      <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="card">
+          <div class="card-icon">1</div>
+          <h3>Залиш заявку</h3>
+          <p>Через форму нижче, у Telegram-боті або просто напиши нам в Instagram. Це займе 2 хвилини.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2</div>
+          <h3>Поговоримо</h3>
+          <p>Координаторка зв'яжеться протягом 24 годин і м'яко з'ясує, яка саме підтримка тобі потрібна.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3</div>
+          <h3>Підбираємо фахівчиню</h3>
+          <p>Психологиню, юристку, кар'єрну менторку — залежно від запиту. Перша зустріч — протягом тижня.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container" style="max-width: 720px;">
+      <div class="sec-head">
+        <span class="eyebrow">Заявка</span>
+        <h2>Розкажи коротко про себе</h2>
+        <p class="lead" style="margin: 0 auto;">Усі поля окрім контакту — за бажанням.</p>
+      </div>
+      <form class="card" style="padding: 40px;" onsubmit="event.preventDefault(); alert('Заявку отримано. Ми зв\\'яжемось протягом 24 годин.'); this.reset();">
+        <div class="form-row">
+          <label>Як до тебе звертатися</label>
+          <input type="text" name="name" placeholder="Ім'я або псевдонім">
+        </div>
+        <div class="form-row">
+          <label>Контакт *</label>
+          <input type="text" name="contact" required placeholder="Телефон, Telegram або email">
+        </div>
+        <div class="form-row">
+          <label>Звідки ти зараз</label>
+          <input type="text" name="location" placeholder="Місто або область">
+        </div>
+        <div class="form-row">
+          <label>Яка підтримка тобі потрібна</label>
+          <select name="need">
+            <option value="">— оберіть —</option>
+            <option>Психологічна підтримка</option>
+            <option>Юридична консультація</option>
+            <option>Гуманітарна допомога</option>
+            <option>Кар'єра / навчання / бізнес</option>
+            <option>Поки не знаю — потрібна розмова</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Коротко опиши ситуацію</label>
+          <textarea name="message" rows="4" placeholder="Що з тобою зараз відбувається? Скільки можеш."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;" type="submit">Надіслати заявку</button>
+        <p style="font-size: 13px; color: var(--uv-ink-soft); margin-top: 16px; text-align: center;">Натискаючи «Надіслати», ти погоджуєшся з нашою <a href="#">політикою конфіденційності</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container text-center">
+      <span class="eyebrow">Якщо терміново</span>
+      <h2>Гаряча лінія психологічної допомоги</h2>
+      <p class="lead" style="margin: 0 auto 32px;">Працює 24/7. Анонімно. Українською, англійською, російською.</p>
+      <a href="tel:+380000000000" class="btn btn-gold" style="font-size: 18px; padding: 18px 36px;">📞 +38 (000) 000-00-00</a>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

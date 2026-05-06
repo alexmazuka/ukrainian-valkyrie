@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Українська Валькірія — підтримка жінок, постраждалих від війни</title>
+  <meta name="description" content="ГО «Українська Валькірія» — психологічна, правова, гуманітарна та економічна підтримка українських жінок, постраждалих від війни.">
+  <link rel="icon" type="image/png" href="public/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .hero-visual .frame { padding: 48px; }
+    .hero-visual .frame img { max-width: 460px; }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow">Громадська організація</span>
+        <h1>Сила <strong>жінки</strong> — сила України.</h1>
+        <p class="lead">Ми підтримуємо українських жінок, які пережили війну, переселення, втрати: психологічно, юридично, економічно й гуманітарно. І робимо їхні голоси чутними.</p>
+        <div class="hero-actions">
+          <a href="donate.html" class="btn btn-gold">Підтримати →</a>
+          <a href="programs.html" class="btn btn-outline">Наші програми</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="num">1 500+</span><span class="label">жінок отримали підтримку</span></div>
+          <div class="hero-stat"><span class="num">15</span><span class="label">областей України</span></div>
+          <div class="hero-stat"><span class="num">50+</span><span class="label">партнерських організацій</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="frame" style="background: linear-gradient(135deg, var(--uv-navy), var(--uv-navy-dark));">
+          <img src="public/images/logo.png" alt="Українська Валькірія" style="width: 88%; height: auto; filter: brightness(0) invert(1); position: relative; z-index: 1;">
+        </div>
+        <div class="badge">
+          <strong>2026</strong>
+          п'ятий рік поряд з українськими жінками
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT INTRO -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <span class="eyebrow">Про нас</span>
+          <h2>Місія, що народилась з війни</h2>
+          <p>«Українська Валькірія» постала у відповідь на найбільший виклик, з яким зіткнулися українські жінки після початку повномасштабного вторгнення: втрата дому, близьких, опори. Ми створили простір, де жінка отримує комплексну підтримку — від першої психологічної допомоги до запуску власної справи.</p>
+          <p>Наш підхід — людиноцентричний, конфіденційний і безоплатний для бенефіціарок. Ми працюємо з переселенками, дружинами військових, ветеранками та жінками, що постраждали від насильства війни.</p>
+          <a href="about.html" class="btn btn-outline mt-32">Дізнатися більше →</a>
+        </div>
+        <div style="aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft);">
+          <img src="public/images/mission-team.jpg" alt="Команда Валькірії" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section bg-cream section-tight">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Разом з нами</span>
+        <h2>Наші партнери</h2>
+        <p class="lead" style="margin: 0 auto;">Ми працюємо з державними інституціями, міжнародними фондами та локальними ініціативами.</p>
+      </div>
+      <div class="partners-grid" id="partnersGrid">
+        <div class="partner">UNFPA Ukraine</div>
+        <div class="partner">UN Women</div>
+        <div class="partner">USAID</div>
+        <div class="partner" style="background: var(--uv-navy);"><img src="public/images/krtn_white.png" alt="KRTN" style="max-height: 40px; width: auto;"></div>
+
+        <div class="partner partners-more">Міністерство соц. політики</div>
+        <div class="partner partners-more">Червоний Хрест</div>
+        <div class="partner partners-more">Каритас Україна</div>
+        <div class="partner partners-more">Save the Children</div>
+        <div class="partner partners-more">UNICEF</div>
+        <div class="partner partners-more">IOM Ukraine</div>
+        <div class="partner partners-more">Право на захист</div>
+        <div class="partner partners-more">Київська Міська Рада</div>
+      </div>
+      <button class="btn btn-outline partners-toggle" id="partnersToggle">Показати всіх партнерів</button>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Програми</span>
+        <h2>Як ми допомагаємо</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Психологічна стійкість</h3>
+          <p>Індивідуальні консультації, групи взаємопідтримки, ретрити для жінок у кризових станах.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+          </div>
+          <h3>Кар'єра і власна справа</h3>
+          <p>Профорієнтація, навчання, менторство, гранти на запуск мікробізнесу для переселенок.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Правовий захист</h3>
+          <p>Безоплатні юридичні консультації, представництво в судах, документи для ВПО.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Гуманітарна допомога</h3>
+          <p>Продуктові набори, ліки, засоби гігієни, дитячі товари — у місцях компактного проживання ВПО.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Медіа і сторітелінг</h3>
+          <p>Підсилюємо голоси жінок: документуємо історії, готуємо матеріали для українських і міжнародних ЗМІ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Наші цінності</span>
+        <h2>На чому ми стоїмо</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item"><span class="value-num">01</span><h4>Людиноцентричність</h4><p>У центрі — жінка, її потреби й вибір.</p></div>
+        <div class="value-item"><span class="value-num">02</span><h4>Безпека</h4><p>Конфіденційність і фізична безпека — нон-нерот.</p></div>
+        <div class="value-item"><span class="value-num">03</span><h4>Гідність</h4><p>Без жалю — лише підтримка на рівних.</p></div>
+        <div class="value-item"><span class="value-num">04</span><h4>Професійність</h4><p>Сертифіковані фахівчині й перевірені методики.</p></div>
+        <div class="value-item"><span class="value-num">05</span><h4>Прозорість</h4><p>Публічні звіти про кожну гривню донорів.</p></div>
+        <div class="value-item"><span class="value-num">06</span><h4>Інклюзивність</h4><p>Без дискримінації за віком, статусом, регіоном.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Відгуки</span>
+        <h2>Голоси жінок, з якими ми працюємо</h2>
+      </div>
+      <div class="t-grid">
+        <div class="t-card">
+          <p class="t-quote">«Після виїзду з Маріуполя я не бачила сенсу жити далі. Психологиня "Валькірії" була першою, хто почув мене без оцінок. Зараз я веду свою маленьку студію в Києві.»</p>
+          <div class="t-author">
+            <div class="t-avatar">О</div>
+            <div class="t-author-meta"><strong>Ольга, 34</strong><span>Маріуполь → Київ</span></div>
+          </div>
+        </div>
+        <div class="t-card">
+          <p class="t-quote">«Юристка допомогла мені відновити документи на дім, який залишився під окупацією. Без них я не могла оформити жодну виплату.»</p>
+          <div class="t-author">
+            <div class="t-avatar">Н</div>
+            <div class="t-author-meta"><strong>Наталія, 47</strong><span>Херсонщина</span></div>
+          </div>
+        </div>
+        <div class="t-card">
+          <p class="t-quote">«Грант на швейну машинку від програми "Кар'єра" — це початок мого бізнесу. Шию білизну для жінок-військовослужбовиць.»</p>
+          <div class="t-author">
+            <div class="t-avatar">К</div>
+            <div class="t-author-meta"><strong>Катерина, 29</strong><span>Дніпро</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="press-band">
+    <div class="container">
+      <h4>Про нас говорять</h4>
+      <div class="press-logos">
+        <a href="https://www.nytimes.com/2023/11/08/world/europe/ukraine-war-army-women.html" target="_blank" rel="noopener">The New York Times</a>
+        <a href="https://www.bbc.com/ukrainian" target="_blank" rel="noopener">BBC News</a>
+        <a href="https://www.abc.es/internacional/valquirias-ucranianas-armadas-peligrosas-repetira-bucha-20231203185613-nt.html" target="_blank" rel="noopener">ABC International</a>
+        <a href="https://nyheder.tv2.dk/udland/2023-11-20-neglelak-og-kalasjnikov-ukraine-mangler-soldater-men-nu-griber-valkyrierne-til-vaaben" target="_blank" rel="noopener">TV-2 Denmark</a>
+        <a href="https://www.n-tv.de/" target="_blank" rel="noopener">n-tv</a>
+        <a href="https://www.youtube.com/watch?v=eXFv_lLJ2F8" target="_blank" rel="noopener">KBS World</a>
+        <a href="https://www.frontliner.com.ua/ukrainian-woman-military-training-kyiv/" target="_blank" rel="noopener">Donbas Frontliner</a>
+        <a href="#" target="_blank" rel="noopener">Телеканал Рада</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <span class="eyebrow" style="color: var(--uv-gold-soft);">Долучайся</span>
+      <h2>Кожен внесок — це нова історія, що почалася.</h2>
+      <p>Підтримайте нас: одноразово, регулярно або через купівлю мерчу. 100% коштів — на програми допомоги.</p>
+      <a href="donate.html" class="btn btn-gold">Підтримати →</a>
+      <a href="shop.html" class="btn btn-ghost" style="margin-left:8px;">Магазин →</a>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Partners toggle
+    const toggle = document.getElementById('partnersToggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        document.querySelectorAll('.partners-more').forEach(p => p.classList.toggle('is-visible'));
+        toggle.style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>
