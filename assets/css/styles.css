@@ -261,12 +261,15 @@ p { margin: 0 0 1em; }
   margin: 0 auto;
 }
 .card {
-  flex: 0 1 320px;
+  flex: 0 0 320px;
+  width: 320px;
+  max-width: 100%;
   background: var(--uv-white);
   border: 1px solid var(--uv-line);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
   transition: all .3s ease;
+  box-sizing: border-box;
 }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: var(--uv-gold-soft); }
 .card-icon {

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=3">
   <style>
     .hero-visual .frame { padding: 48px; }
     .hero-visual .frame img { max-width: 460px; }
@@ -163,6 +163,21 @@
     </div>
   </section>
 
+  <!-- LATEST BLOG -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow">Блог</span>
+        <h2>Свіжі історії</h2>
+        <p class="lead" style="margin: 0 auto;">Історії жінок, експертні матеріали, новини організації.</p>
+      </div>
+      <div class="blog-grid" id="homeBlogGrid"></div>
+      <div class="text-center mt-48">
+        <a href="blog.html" class="btn btn-outline">Усі публікації →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- PRESS -->
   <section class="press-band">
     <div class="container">
@@ -194,5 +209,30 @@
   <div id="site-footer"></div>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    // Latest 3 blog posts on homepage
+    const homeFallback = [
+      { slug: 'istoriya-olhy', title: 'Історія Ольги: від Маріуполя до власної студії в Києві', excerpt: 'Ольга виїхала з Маріуполя у березні 2022 року. Через два роки вона веде свою студію кераміки.', date: '2026-04-20', category: 'Історії', cover: 'public/images/impact-community.jpg' },
+      { slug: 'pravo-na-vyplaty', title: 'Як ВПО оформити житловий сертифікат у 2026 році', excerpt: 'Покрокова інструкція від наших юристок: документи, строки, типові помилки.', date: '2026-04-12', category: 'Право', cover: 'public/images/programs-training.jpg' },
+      { slug: 'startuye-novyy-nabir', title: 'Стартує новий набір на програму «Кар\'єра 2026»', excerpt: 'Приймаємо заявки на участь у 6-місячній програмі перекваліфікації для жінок-переселенок.', date: '2026-04-05', category: 'Новини', cover: 'public/images/mission-team.jpg' }
+    ];
+    fetch('content/blog/index.json')
+      .then(r => r.ok ? r.json() : homeFallback)
+      .catch(() => homeFallback)
+      .then(posts => {
+        const recent = posts.slice(0, 3);
+        document.getElementById('homeBlogGrid').innerHTML = recent.map(p => `
+          <a href="blog-post.html?slug=${p.slug}" class="post-card">
+            <div class="post-cover"><img src="${p.cover}" alt=""></div>
+            <div class="post-body">
+              <div class="post-meta">${p.category} · ${new Date(p.date).toLocaleDateString('uk-UA', {day: 'numeric', month: 'long', year: 'numeric'})}</div>
+              <h3>${p.title}</h3>
+              <p>${p.excerpt}</p>
+              <span class="read-more">Читати →</span>
+            </div>
+          </a>
+        `).join('');
+      });
+  </script>
 </body>
 </html>
