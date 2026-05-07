@@ -65,33 +65,6 @@
     </div>
   </section>
 
-  <!-- PARTNERS -->
-  <section class="section bg-cream section-tight">
-    <div class="container">
-      <div class="sec-head">
-        <span class="eyebrow">Разом з нами</span>
-        <h2>Наші партнери</h2>
-        <p class="lead" style="margin: 0 auto;">Ми працюємо з державними інституціями, міжнародними фондами та локальними ініціативами.</p>
-      </div>
-      <div class="partners-grid" id="partnersGrid">
-        <div class="partner">UNFPA Ukraine</div>
-        <div class="partner">UN Women</div>
-        <div class="partner">USAID</div>
-        <div class="partner" style="background: var(--uv-navy);"><img src="public/images/krtn_white.png" alt="KRTN" style="max-height: 40px; width: auto;"></div>
-
-        <div class="partner partners-more">Міністерство соц. політики</div>
-        <div class="partner partners-more">Червоний Хрест</div>
-        <div class="partner partners-more">Каритас Україна</div>
-        <div class="partner partners-more">Save the Children</div>
-        <div class="partner partners-more">UNICEF</div>
-        <div class="partner partners-more">IOM Ukraine</div>
-        <div class="partner partners-more">Право на захист</div>
-        <div class="partner partners-more">Київська Міська Рада</div>
-      </div>
-      <button class="btn btn-outline partners-toggle" id="partnersToggle">Показати всіх партнерів</button>
-    </div>
-  </section>
-
   <!-- PROGRAMS -->
   <section class="section">
     <div class="container">
@@ -221,15 +194,5 @@
   <div id="site-footer"></div>
 
   <script src="assets/js/main.js"></script>
-  <script>
-    // Partners toggle
-    const toggle = document.getElementById('partnersToggle');
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        document.querySelectorAll('.partners-more').forEach(p => p.classList.toggle('is-visible'));
-        toggle.style.display = 'none';
-      });
-    }
-  </script>
 </body>
 </html>
