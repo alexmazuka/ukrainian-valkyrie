@@ -252,23 +252,31 @@ p { margin: 0 0 1em; }
 /* ==========================================
    Programs / cards
    ========================================== */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
 .card {
+  flex: 0 1 320px;
   background: var(--uv-white);
   border: 1px solid var(--uv-line);
   border-radius: var(--radius-lg);
-  padding: 36px 28px;
+  padding: 28px 24px;
   transition: all .3s ease;
 }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: var(--uv-gold-soft); }
 .card-icon {
-  width: 56px; height: 56px;
+  width: 48px; height: 48px;
   background: var(--uv-cream-warm);
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   color: var(--uv-navy);
-  margin-bottom: 24px;
-  font-size: 26px;
+  margin-bottom: 18px;
+  font-size: 22px;
 }
 .card h3 { margin-bottom: 12px; }
 .card p { color: var(--uv-ink-soft); font-size: 15px; margin: 0; }
