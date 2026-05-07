@@ -89,7 +89,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <img src="${root}public/images/logo.png" alt="">
+            <img src="${root}public/images/logo-white.png" alt="">
             <p>${L.footer.tagline}</p>
             <p style="font-size:13px; opacity:0.7;">${L.footer.location}</p>
           </div>
